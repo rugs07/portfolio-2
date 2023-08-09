@@ -1,9 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import projects from "../projectsdata.js";
 import Contact from "./Contact.jsx";
+import Project from "./Project.jsx";
 
 const boxVariant = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
@@ -68,33 +69,10 @@ const Projects = () => {
           flexDirection="column"
           alignItems="center"
           margin="90px 0px 40px 90px"
-          width="70%"
+          width="90%"
         >
           {projects.map((p) => (
-            <Box
-              height="60vh"
-              sx={{
-                background: "none",
-                width: "400px",
-                padding: "10px",
-                border: "6px solid whitesmoke",
-                borderRadius: "4px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <img src={p.img} alt="imges" style={{ height: "300px" }} />
-              <Typography
-                color="whitesmoke"
-                fontWeight="bold"
-                variant="h3"
-                alignSelf="flex-end"
-                marginLeft="30px"
-              >
-                {p.name}
-              </Typography>
-            </Box>
+            <Project img={p.img} name={p.name}/>
           ))}
         </Box>
       </Box>

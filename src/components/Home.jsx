@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Box, Grid, Link, Typography, useMediaQuery,useTheme } from "@mui/material";
+import { Box, Grid, Link, Popover, Typography, useMediaQuery,useTheme } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useTransform, useScroll, motion, useAnimation } from "framer-motion";
 import heroImg from "../assets/hero.png";
@@ -70,6 +70,8 @@ const Home = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [color, setColor] = useState(colors[0]);
   const [skills, setSkills] = useState(skillArr);
+  const[anchorEl,setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -99,9 +101,14 @@ const Home = () => {
     };
   }, []);
 
-  const handleDragWarn=()=>{
-    alert("Drag and Drop at your own")
-  }
+  const handlePopoverOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+
 
   return (
     <Box sx={{ overflowX: "hidden", minHeight: "100vh",paddingBottom:'60px',paddingTop:isMobile?"0rem":'0rem' }}>
@@ -160,9 +167,30 @@ const Home = () => {
       </motion.div>
  
       <Box marginTop="150px" display="flex" flexDirection="column">
-        <Typography sx={{fontSize:isMobile?'2.8rem':'5.6rem',width:isMobile?"50%":"100%",alignSelf:"center",color:color,marginBottom:isMobile?"1.4rem":"0rem"}} className={classes.text}>
+        <Typography sx={{fontSize:isMobile?'2.8rem':'5.6rem',width:isMobile?"50%":"100%",alignSelf:"center",color:color,marginBottom:isMobile?"1.4rem":"0rem"}} className={classes.text} aria-owns={open ? 'mouse-over-popover':undefined} aria-haspopup="true" onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose}>
           What Am I Good At <span style={{ color: color }}>?</span>
         </Typography>
+        <Popover
+        id="mouse-over-popover"
+        sx={{
+          pointerEvents: 'none',
+        }}
+        open={open}
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        onClose={handlePopoverClose}
+        disableRestoreFocus
+      >
+        <Typography sx={{ p: 1,bgcolor:'black',color:'white',border:'1px solid #acacac',borderRadius:'2px' }}>Donot Try Dragging !</Typography>
+      </Popover>
+
         <Box sx={{ overflow: "hidden" }}>
           {skills.map((skill) => (
             <motion.div

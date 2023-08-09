@@ -4,8 +4,8 @@ import { Box, TextField, Typography, Button } from "@mui/material";
 const inputStyles = {
   backgroundColor: "transparent",
   color: "white",
-fontWeight:'bold',
-fontFamily:'Montserrat',
+  fontWeight: "bold",
+  fontFamily: "Montserrat",
 };
 
 const Contact = () => {
@@ -20,9 +20,8 @@ const Contact = () => {
           // backgroundColor: "#00324b",
           backgroundColor: "#2b4162",
           // borderTop:'1px solid #acacac',
-backgroundImage: "linear-gradient(360deg, #12100e 20%, #434343 94%)",
-paddingTop:"6rem"
-
+          backgroundImage: "linear-gradient(360deg, #12100e 20%, #434343 94%)",
+          paddingTop: "6rem",
         }}
       >
         <Typography
@@ -65,7 +64,7 @@ paddingTop:"6rem"
                 style: { ...inputStyles },
               }}
               InputProps={{
-                style: { color: 'white' },
+                style: { color: "white" },
               }}
             />
             <TextField
@@ -84,7 +83,7 @@ paddingTop:"6rem"
               label="Message"
               multiline
               rows={4}
-              defaultValue="Type your message here..."
+              placeholder="Type your message here..."
               variant="standard"
               InputLabelProps={{
                 style: { color: "white" },
@@ -93,7 +92,12 @@ paddingTop:"6rem"
                 style: { ...inputStyles },
               }}
             />
-            <Button variant="contained" sx={{alignSelf:'start',background:'#171d39'}}>Send!</Button>
+            <Button
+              variant="contained"
+              sx={{ alignSelf: "start", background: "#171d39" }}
+            >
+              Send!
+            </Button>
           </Box>
         </Box>
       </Box>

@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+body{
+  overflow-x: hidden;
+}
+
 .MuiInput-underline:before {
   border-bottom-color: white !important;
 }
