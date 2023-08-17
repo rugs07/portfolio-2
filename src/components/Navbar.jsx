@@ -8,6 +8,7 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const[showSocials,setShowSocials] = useState(false);
+  const[rotateName,setRotateName] = useState(false);
 
   const [scrollY, setScrollY] = useState(0);
   const name = "Anirudh";
@@ -19,19 +20,30 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
-      if (window.pageYOffset > 0) {
+      if (window.scrollY > 40 && window.scrollY < 1500) {
         setShowSocials(true);
-      } else {
+        setRotateName(false)
+      } else if  (window.scrollY >= 1500 && window.scrollY < 7600) {
         setShowSocials(false);
+        setRotateName(true)
       }
+      //  else if (window.scrollY >= 7600) {
+      //   setShowSocials(true);}
+         else {
+        setShowSocials(false);
+        setRotateName(false)
+      }
+if(window.scrollY>=5000){
+  setRotateName(false)
+}
     };
-
-    window.addEventListener("scroll", handleScroll);
-
+  
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  
 
   const colors = [
     "#FFFFE0",
@@ -64,7 +76,7 @@ const Navbar = () => {
         width: '50px',
         height: '50px',
       }}/>
-      <Typography color='#f3f3f3' fontFamily="Montserrat" fontWeight="600" variant="h5">
+      <Typography color='#f3f3f3' fontFamily="Montserrat" fontWeight="600" variant="h5" style={{transform:rotateName?"rotate(90deg)":"none",position:rotateName?"fixed":"sticky",top:rotateName?"125px":"10px",left:rotateName?"-15px":"10px",transition:"0.5s transform ease"}}>
       {name.split("").map((letter, index) => (
           <motion.span
             key={index}
@@ -92,10 +104,18 @@ const Navbar = () => {
        }}
       >
       <Box sx={{margin:'8px',display:"flex",flexDirection:'column',width:'20%'}}>
+        <a target="_blank" href="https://twitter.com/aspiringDev22">
         <AiFillTwitterCircle color="white" size={40} style={{marginBottom:'10px'}}/>
+        </a>
+        <a target="_blank" href="https://www.linkedin.com/in/anirudhs22">
         <AiOutlineLinkedin color="white" size={40} style={{marginBottom:'10px'}}/>
+        </a>
+        <a target="_blank" href="https://github.com/aspiringDev22">
         <AiOutlineGithub color="white" size={40} style={{marginBottom:'10px'}}/>
+        </a>
+        <a target="_blank" href="mailto:anirudhs00.22@gmail.com">
         <AiOutlineMail color="white" size={40} style={{marginBottom:'10px'}}/>
+        </a>
       </Box>
       </motion.div>
     </AppBar>

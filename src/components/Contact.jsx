@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, TextField, Typography, Button } from "@mui/material";
+import { Box, TextField, Typography, Button, useMediaQuery,useTheme } from "@mui/material";
 
 const inputStyles = {
   backgroundColor: "transparent",
@@ -9,28 +9,29 @@ const inputStyles = {
 };
 
 const Contact = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <Box>
+    <>
       <Box
         sx={{
           minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           width: "100%",
-          // backgroundColor: "#00324b",
           backgroundColor: "#2b4162",
-          // borderTop:'1px solid #acacac',
           backgroundImage: "linear-gradient(360deg, #12100e 20%, #434343 94%)",
           paddingTop: "6rem",
         }}
       >
         <Typography
-          variant="h1"
+          fontSize={isMobile ? "3.4rem" : "6rem"}
           color="white"
-          textAlign="end"
+          textAlign={isMobile ? "start":"end"}
           fontFamily="Source Sans Pro"
           fontWeight="bold"
-          paddingRight="80px"
+          paddingRight={isMobile ? "0px" : "80px"}
+          marginLeft={isMobile ? "2.4rem" :"0rem"}
           position="sticky"
           top="0px"
         >
@@ -39,23 +40,26 @@ const Contact = () => {
         <Box
           sx={{
             width: "100%",
-            padding: "80px 100px",
             display: "flex",
-            justifyContent: "space-between",
+            flexDirection:isMobile ? "column":"row",
+            justifyContent: "space-evenly",
+            padding:isMobile ? "33px 30px": "80px 40px",
+            marginLeft: isMobile ? "14px" : "0px",
+            gap:"30px"
           }}
         >
           <Typography
-            variant="h3"
+            fontSize={isMobile ? "2.0rem":"9vh"}
             color="white"
             fontFamily="Source Sans Pro"
             fontWeight="bold"
-            width="60%"
-            paddingTop="40px"
+            width={isMobile ? "100%" : "60%"}
+            paddingTop={isMobile ? "0px":"10px"}
           >
-            Let's unlock together next level of possibilites 🚀
+            {isMobile ? "Let's Discuss New Ideas Together 🚀" : "Let's unlock together next level of possibilites 🚀"}
             <span style={{ display: "block" }}>REACH OUT!</span>
           </Typography>
-          <Box width="40%" display="flex" flexDirection="column" gap="20px">
+          <Box width={isMobile?"80%":"40%"} display="flex" flexDirection="column" gap="20px" marginTop={isMobile ?"22px":"0px"} paddingRight={isMobile ? "0px":"70px"}>
             <TextField
               id="standard-basic"
               label="Name"
@@ -101,7 +105,7 @@ const Contact = () => {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

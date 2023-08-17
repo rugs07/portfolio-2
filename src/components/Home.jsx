@@ -111,7 +111,7 @@ const Home = () => {
 
 
   return (
-    <Box sx={{ overflowX: "hidden", minHeight: "100vh",paddingBottom:'60px',paddingTop:isMobile?"0rem":'0rem' }}>
+    <Box sx={{ overflowX: "hidden", minHeight: "100vh",paddingBottom:'60px' }}>
       <motion.div
         ref={targetRef}
         style={{ translateX,scale }}
@@ -147,15 +147,16 @@ const Home = () => {
               backgroundImage: `url(${heroImg})`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
-              width:isMobile?"93vw" :"80vw",
+              width:isMobile?"100vw" :"80vw",
               padding:isMobile?"10px 5px":'0px',
-              height:isMobile?"80vh": "400px",
+              minHeight:isMobile?"80vh": "70vh",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              marginRight:isMobile?"3%":"4%"
             }}
           >
-            <Typography color="#fff" width="90%" textAlign="left" sx={{fontSize:isMobile?'1.8rem':'2rem'}}>
+            <Typography color="#fff" width="90%" textAlign="left" sx={{fontSize:isMobile?'1.8rem':'2.2rem'}}>
               Hi, I am Anirudh, a Passionate Full-Stack Web Developer. I like
               building innovative and multiFunctioning sites, tools for the web.
               I like to implement solutions that are responsive and efficient
