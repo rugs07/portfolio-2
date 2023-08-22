@@ -1,5 +1,6 @@
-import React from "react";
-import { Box, TextField, Typography, Button, useMediaQuery,useTheme } from "@mui/material";
+import React, { useRef, useState } from "react";
+import { Box, TextField, Typography, Button, useMediaQuery,useTheme, Alert, Snackbar } from "@mui/material";
+import emailjs from '@emailjs/browser';
 
 const inputStyles = {
   backgroundColor: "transparent",
@@ -11,17 +12,57 @@ const inputStyles = {
 const Contact = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const formRef = useRef();
+  const [contactForm,setContactForm] = useState({
+    name:"",
+    email:"",
+    message:"",
+  })
+const[isMailSent,setIsMailSent] = useState(false);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setContactForm((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  
+
+const handleSubmit=(e)=>{
+  e.preventDefault();
+    emailjs.sendForm('service_6twnqqa', 'template_140xfsw', formRef.current, 'mYJvl6wE9u6oSBMsz')
+      .then((response) => {
+      setIsMailSent(true);
+      setTimeout(() => {
+        setIsMailSent(false);
+      }, 3000);
+      setContactForm({
+        name:"",
+        email:"",
+        message:""
+      })
+      }, (error) => {
+        console.error('Error sending email:', error);
+      });
+  };
+
   return (
     <>
-      <Box
+    <Snackbar open={isMailSent} autoHideDuration={3000} onClose={!isMailSent}>
+  <Alert severity="success" sx={{ width: '100%' }}>
+    Message Sent Successfully!
+  </Alert>
+</Snackbar>
+      <Box 
+      id="contactBox"
         sx={{
-          minHeight: "100vh",
+          minHeight:isMobile?"95vh" : "100vh",
           display: "flex",
           flexDirection: "column",
           width: "100%",
           backgroundColor: "#2b4162",
           backgroundImage: "linear-gradient(360deg, #12100e 20%, #434343 94%)",
-          paddingTop: "6rem",
+          paddingTop:isMobile?"4rem":"6rem",
         }}
       >
         <Typography
@@ -59,11 +100,15 @@ const Contact = () => {
             {isMobile ? "Let's Discuss New Ideas Together 🚀" : "Let's unlock together next level of possibilites 🚀"}
             <span style={{ display: "block" }}>REACH OUT!</span>
           </Typography>
-          <Box width={isMobile?"80%":"40%"} display="flex" flexDirection="column" gap="20px" marginTop={isMobile ?"22px":"0px"} paddingRight={isMobile ? "0px":"70px"}>
+          <Box component="form" ref={formRef} onSubmit={handleSubmit} width={isMobile?"80%":"40%"} display="flex" flexDirection="column" gap="20px" marginTop={isMobile ?"22px":"0px"} paddingRight={isMobile ? "0px":"70px"}>
             <TextField
               id="standard-basic"
               label="Name"
               variant="standard"
+              name="name"
+              value={contactForm.name}
+              onChange={handleInputChange}
+              required
               InputLabelProps={{
                 style: { ...inputStyles },
               }}
@@ -75,6 +120,10 @@ const Contact = () => {
               id="standard-basic"
               label="Email"
               variant="standard"
+              name="email"
+              required
+              value={contactForm.email}
+              onChange={handleInputChange}
               InputLabelProps={{
                 style: { color: "white" },
               }}
@@ -85,8 +134,12 @@ const Contact = () => {
             <TextField
               id="standard-multiline-static"
               label="Message"
+              name="message"
               multiline
+              required
               rows={4}
+              value={contactForm.message}
+              onChange={handleInputChange}
               placeholder="Type your message here..."
               variant="standard"
               InputLabelProps={{
@@ -99,6 +152,7 @@ const Contact = () => {
             <Button
               variant="contained"
               sx={{ alignSelf: "start", background: "#171d39" }}
+              type="submit"
             >
               Send!
             </Button>

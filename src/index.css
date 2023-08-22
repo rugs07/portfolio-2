@@ -7,6 +7,7 @@
 
 body{
   overflow-x: hidden;
+  background-color: black;
 }
 
 .MuiInput-underline:before {
@@ -24,3 +25,4 @@ body{
 .Mui-focused .MuiInput-underline:after {
   border-bottom-color: lightgray;
 }
+

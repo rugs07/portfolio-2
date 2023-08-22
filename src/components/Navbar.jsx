@@ -26,16 +26,24 @@ const Navbar = () => {
       } else if  (window.scrollY >= 1500 && window.scrollY < 7600) {
         setShowSocials(false);
         setRotateName(true)
-      }
-      //  else if (window.scrollY >= 7600) {
-      //   setShowSocials(true);}
-         else {
+      }else{
         setShowSocials(false);
         setRotateName(false)
       }
-if(window.scrollY>=5000){
-  setRotateName(false)
+  if(!isMobile){
+    if(window.scrollY>=5200 ){
+    setRotateName(false)
+  }
+  if(window.scrollY>=6200){
+    setRotateName(false)
 }
+  }
+
+  if(isMobile){
+    if(window.scrollY>=6000){
+      setRotateName(false)
+    }
+  }
     };
   
     window.addEventListener('scroll', handleScroll);
@@ -64,11 +72,11 @@ if(window.scrollY>=5000){
         height: "14vh",
         position: "fixed",
         top: 0,
-        left: 0,
+        left:isMobile ? -20 : 0,
         color: "#000",
         cursor:'pointer',
         boxShadow:'none',
-        zIndex:isMobile?1000:""
+        zIndex:isMobile?10:""
       }}
     >
       <Box sx={{display:'flex',alignItems:'center',boxShadow:'none'}}>
@@ -76,7 +84,7 @@ if(window.scrollY>=5000){
         width: '50px',
         height: '50px',
       }}/>
-      <Typography color='#f3f3f3' fontFamily="Montserrat" fontWeight="600" variant="h5" style={{transform:rotateName?"rotate(90deg)":"none",position:rotateName?"fixed":"sticky",top:rotateName?"125px":"10px",left:rotateName?"-15px":"10px",transition:"0.5s transform ease"}}>
+      <Typography color='#f3f3f3' fontFamily="Montserrat" fontWeight="600" variant="h5" style={{transform:rotateName?"rotate(90deg)":"none",position:rotateName?"fixed":"sticky",top:rotateName?"125px":"10px",left:rotateName? isMobile?"-35px":"-15px":"10px",transition:"0.5s transform ease"}}>
       {name.split("").map((letter, index) => (
           <motion.span
             key={index}

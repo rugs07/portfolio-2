@@ -1,38 +1,38 @@
-import { Box, Typography } from "@mui/material";
+import React from "react";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+const Project = React.lazy(()=>import("./Project.jsx"));
 import projects from "../projectsdata.js";
 import Contact from "./Contact.jsx";
-import Project from "./Project.jsx";
-import blog1Img from '../assets/blog1.png'
-import blog2Img from '../assets/blog2.png';
-import blog3Img from '../assets/blog3.png';
-import blog4Img from '../assets/blog4.png';
-
+import blog1Img from "../assets/blog1.png";
+import blog2Img from "../assets/blog2.png";
+import blog3Img from "../assets/blog3.png";
+import blog4Img from "../assets/blog4.png";
 
 const blogs = [
   {
-    id:0,
-    img:blog1Img,
-    link:"https://anirudhs22.hashnode.dev/all-about-events-in-javascript",
+    id: 0,
+    img: blog1Img,
+    link: "https://anirudhs22.hashnode.dev/all-about-events-in-javascript",
   },
   {
-    id:1,
-    img:blog2Img,
-    link:"https://anirudhs22.hashnode.dev/var-vs-let-vs-const",
+    id: 1,
+    img: blog2Img,
+    link: "https://anirudhs22.hashnode.dev/var-vs-let-vs-const",
   },
   {
-    id:2,
-    img:blog3Img,
-    link:"https://anirudhs22.hashnode.dev/callback-functions-in-javascript",
+    id: 2,
+    img: blog3Img,
+    link: "https://anirudhs22.hashnode.dev/callback-functions-in-javascript",
   },
   {
-    id:0,
-    img:blog4Img,
-    link:"https://anirudhs22.hashnode.dev/javascript-important-questions1"
-  }
-]
+    id: 0,
+    img: blog4Img,
+    link: "https://anirudhs22.hashnode.dev/javascript-important-questions1",
+  },
+];
 
 const boxVariant = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
@@ -42,8 +42,10 @@ const boxVariant = {
 const Projects = () => {
   const control = useAnimation();
   const [ref, inView] = useInView();
-  const[blogData,setBlogData] = useState(blogs)
-
+  const [projectData, setProjectData] = useState(projects);
+  const [blogData, setBlogData] = useState(blogs);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     if (inView) {
@@ -69,6 +71,7 @@ const Projects = () => {
           width: "100%",
           padding: "30px 0px 50px 0px",
         }}
+        id="projectBox"
       >
         <motion.div
           initial={{ y: -100 }}
@@ -78,15 +81,15 @@ const Projects = () => {
             type: "spring",
             damping: 20,
             stiffness: 200,
-          }} 
+          }}
         >
           <Typography
-            variant="h1"
+            fontSize={isMobile ? "4.3rem" : "6rem"}
             color="white"
             textAlign="end"
             fontFamily="Source Sans Pro"
             fontWeight="bold"
-            paddingRight="80px"
+            paddingRight={isMobile ? "65px" : "80px"}
             position="sticky"
             top="0px"
           >
@@ -95,14 +98,21 @@ const Projects = () => {
         </motion.div>
         <Box
           display="flex"
-          gap="90px"
+          gap="140px"
           flexDirection="column"
           alignItems="center"
-          margin="90px 0px 40px 90px"
+          margin={isMobile ? "90px 0px 40px 40px" : "90px 0px 40px 90px"}
           width="90%"
         >
-          {projects.map((p) => (
-            <Project img={p.img} name={p.name}/>
+          {projectData.map((p, i) => (
+            <Suspense key={i}>
+            <Project
+              img={p.img}
+              name={p.name}
+              github={p.github}
+              live={p.livesite}
+            />
+            </Suspense>
           ))}
         </Box>
       </Box>
@@ -110,17 +120,19 @@ const Projects = () => {
         sx={{
           minHeight: "100vh",
           width: "100%",
+          paddingTop: "5rem",
           backgroundColor: "#000000",
+          paddingBottom:isMobile?"7rem":"0rem",
           backgroundImage: "linear-gradient(180deg, #12100e 0%, #434343 74%)",
         }}
       >
         <Typography
-          variant="h1"
+          fontSize={isMobile ? "4.3rem" : "6rem"}
           color="white"
           textAlign="end"
           fontFamily="Source Sans Pro"
           fontWeight="bold"
-          paddingRight="80px"
+          paddingRight={isMobile ? "115px" : "80px"}
           position="sticky"
           top="0px"
           sx={
@@ -132,42 +144,48 @@ const Projects = () => {
           Blogs
         </Typography>
         <Box
-      sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
-        gap: "200px",
-        minHeight:'100vh',
-        padding:'5rem'
-      }}
-    >
-      {blogData.map((blog, index) => (
-        <Box
-          key={index}
-          height="200px"
           sx={{
-            background: "none",
-            maxWidth: "100%",
-            padding: "10px",
-            borderRadius: "4px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            border:'2px solid #e3e3e3',
-            height:'40vh',
-            objectFit: "cover",
-            boxShadow:"1px 8px 8px 0px rgba(200,200,200,0.75)"
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
+            gap: "200px",
+            minHeight: "100vh",
+            padding:isMobile?"6rem 2.8rem" :"5rem",
           }}
         >
-          <a href={blog.link} target="_blank">
-          <img
-            src={blog.img}
-            alt={`Image ${index}`}
-            style={{ height: "50vh",borderRadius:'5px',width:'100%',cursor:"pointer" }}
-          />
-          </a>
+          {blogData.map((blog, index) => (
+            <Box
+              key={index}
+              // height="200px"
+              sx={{
+                background: "none",
+                maxWidth: "100%",
+                padding: "10px",
+                borderRadius: "4px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                border: "2px solid #e3e3e3",
+                height:isMobile? "27vh":"40vh",
+                objectFit: "cover",
+                boxShadow: "1px 8px 8px 0px rgba(200,200,200,0.75)",
+              }}
+            >
+              <a href={blog.link} target="_blank">
+                <img
+                  src={blog.img}
+                  alt={`Image ${index}`}
+                  style={{
+                    height: isMobile?"33vh":"50vh",
+                    borderRadius: "5px",
+                    width:isMobile? "100%":"100%",
+                    cursor: "pointer",
+                    zIndex:isMobile?100000:""
+                  }}
+                />
+              </a>
+            </Box>
+          ))}
         </Box>
-      ))}
-    </Box>
       </Box>
       <Contact />
     </motion.div>

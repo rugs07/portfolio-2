@@ -6,7 +6,7 @@ const HomeLoader = () => {
     <Box
       style={{
         backgroundColor: "#4d4855",
-        backgroundImage: "linear-gradient(147deg, #4d4855 0%, #000000 74%)",        
+        backgroundImage: "linear-gradient(47deg, rgb(10,4,50) 0%, rgb(4,10,42) 34%,rgb(7,9,22) 75%)",        
         height: '100vh',
         display: 'flex',
         flexDirection: 'column',
