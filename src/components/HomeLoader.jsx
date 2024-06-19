@@ -26,7 +26,7 @@ const HomeLoader = () => {
           animate={{ x: 1000 }}
           transition={{ duration: 2, ease: 'easeInOut', delay: 1.2 }}
         >
-          <Typography variant="h2" color='#fff'>Anirudh's Portfolio</Typography>
+          <Typography variant="h2" color='#fff'>Rugwed's Portfolio</Typography>
         </motion.div>
       </motion.div>
       <Box style={{ display: 'flex', justifyContent: 'center' }}>
