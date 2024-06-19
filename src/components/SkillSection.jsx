@@ -38,11 +38,11 @@ const colors = [
 const skillArr = [
   "HTML,",
   "CSS,",
-  "NODE,",
-  "REACT,",
-  "JAVASCRIPT,",
+  "JAVASCRIPT",
+  "MERN STACK,",
   "TYPESCRIPT,",
-  "EXPRESS.",
+  "WEBXR,",
+  "UNITY.",
 ];
 
 const SkillSection = () => {

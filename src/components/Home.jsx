@@ -145,7 +145,7 @@ const Home = () => {
                 textAlign="left"
                 sx={{ fontSize: isMobile ? "1.8rem" : "2.2rem" }}
               >
-                Hi, I am Anirudh, a Passionate Full-Stack Web Developer. I like
+                Hi, I am Rugwed, a Passionate Full-Stack Web Developer. I like
                 building innovative and multiFunctioning sites, tools for the
                 web. I like to implement solutions that are responsive and
                 efficient which enhances user's experience.A great problem

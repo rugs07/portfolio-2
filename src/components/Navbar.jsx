@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import {motion} from 'framer-motion';
 import { AppBar, Avatar, Box, Typography,useMediaQuery,useTheme } from "@mui/material";
 import {AiFillTwitterCircle,AiOutlineLinkedin,AiOutlineGithub,AiOutlineMail} from 'react-icons/ai'
-import navIcon from '../assets/navimg.png';
+import navIcon from '../assets/anime.png';
 
 const Navbar = () => {
   const theme = useTheme();
@@ -11,7 +11,7 @@ const Navbar = () => {
   const[rotateName,setRotateName] = useState(false);
 
   const [scrollY, setScrollY] = useState(0);
-  const name = "Anirudh";
+  const name = "Rugwed";
   const letterVariants = {
     hidden: { opacity: 1 },
     visible: { opacity: 0, transition: { duration: 0.5 } },
@@ -115,13 +115,13 @@ const Navbar = () => {
         <a target="_blank" href="https://twitter.com/aspiringDev22">
         <AiFillTwitterCircle color="white" size={40} style={{marginBottom:'10px'}}/>
         </a>
-        <a target="_blank" href="https://www.linkedin.com/in/anirudhs22">
+        <a target="_blank" href="www.linkedin.com/in/rugwedbodhankar37/">
         <AiOutlineLinkedin color="white" size={40} style={{marginBottom:'10px'}}/>
         </a>
-        <a target="_blank" href="https://github.com/aspiringDev22">
+        <a target="_blank" href="https://github.com/rugs07">
         <AiOutlineGithub color="white" size={40} style={{marginBottom:'10px'}}/>
         </a>
-        <a target="_blank" href="mailto:anirudhs00.22@gmail.com">
+        <a target="_blank" href="mailto:rugwed174518@gmail.com">
         <AiOutlineMail color="white" size={40} style={{marginBottom:'10px'}}/>
         </a>
       </Box>
