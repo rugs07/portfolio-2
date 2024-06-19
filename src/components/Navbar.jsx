@@ -112,9 +112,6 @@ const Navbar = () => {
        }}
       >
       <Box sx={{margin:'8px',display:"flex",flexDirection:'column',width:'20%'}}>
-        <a target="_blank" href="https://twitter.com/aspiringDev22">
-        <AiFillTwitterCircle color="white" size={40} style={{marginBottom:'10px'}}/>
-        </a>
         <a target="_blank" href="www.linkedin.com/in/rugwedbodhankar37/">
         <AiOutlineLinkedin color="white" size={40} style={{marginBottom:'10px'}}/>
         </a>

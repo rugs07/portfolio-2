@@ -20,7 +20,7 @@ export default [
       techstack:"React, Firebase, MapGL",
       details:"Medlocater is a app to find hospitals nearby in emergency situation.Integrated Firebase Google authentication for secure user sign-in and used OpenAPIfy for efficient location data retrieval. Visualized locations with MapLibre GL and hosted on Netlify for reliability.",
       github:"https://github.com/rugs07/Medlocater",
-      livesite:"https://medlocater.netlify.app/SignIn",
+      livesite:"https://medlocater.netlify.app",
       },
       {
       id:2,

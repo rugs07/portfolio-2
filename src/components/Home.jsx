@@ -145,12 +145,12 @@ const Home = () => {
                 textAlign="left"
                 sx={{ fontSize: isMobile ? "1.8rem" : "2.2rem" }}
               >
-                Hi, I am Rugwed, a Passionate Full-Stack Web Developer. I like
-                building innovative and multiFunctioning sites, tools for the
-                web. I like to implement solutions that are responsive and
-                efficient which enhances user's experience.A great problem
-                solver with a big appetite to learn and improve my skills
-                continuosly.
+                Hello, I'm Rugwed, a full-stack web developer with passion. I
+                enjoy creating unique, multipurpose websites and web tools. I
+                enjoy putting into practice ideas that improve the user
+                experience and are responsive and effective. A fantastic problem
+                solver with a strong desire to learn new things and keep getting
+                better at what I do.
               </Typography>
             </Box>
           </Suspense>
