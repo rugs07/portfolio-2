@@ -6,7 +6,7 @@ import { Suspense, useEffect, useState } from "react";
 const Project = React.lazy(()=>import("./Project.jsx"));
 import projects from "../projectsdata.js";
 import Contact from "./Contact.jsx";
-import blog1Img from "../assets/blog1.png";
+import blog1Img from "../assets/csf.jpg";
 import blog2Img from "../assets/blog2.png";
 import blog3Img from "../assets/blog3.png";
 import blog4Img from "../assets/blog4.png";
@@ -15,7 +15,7 @@ const blogs = [
   {
     id: 0,
     img: blog1Img,
-    link: "https://anirudhs22.hashnode.dev/all-about-events-in-javascript",
+    link: "https://rugwed37.hashnode.dev/elevate-your-tech-prep-essential-cs-fundamental-revision-notes",
   },
   {
     id: 1,

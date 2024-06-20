@@ -67,37 +67,40 @@ const Contact = () => {
           fontFamily="Source Sans Pro"
           fontWeight="bold"
           width={isMobile ? "80%" : "40%"}
+          textAlign="center"
           paddingRight={isMobile ? "0px" : "70px"}
           marginTop="22px"
         >
           You can reach me at: <a href="mailto:tech.rugwed@gmail.com" style={{ color: "white", textDecoration: "underline" }}>tech.rugwed@gmail.com</a>
         </Typography>
       </Box>
-      {isMobile && (
-        <Box
-          sx={{
-            marginTop: "40px",
-            padding: "0 30px",
-            textAlign: "center"
-          }}
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: isMobile ? "flex-start" : "center",
+          padding: isMobile ? "0 30px" : "0 70px",
+          marginTop: "22px",
+          marginBottom: "22px",
+        }}
+      >
+        <Typography
+          fontSize={isMobile ? "1.6rem" : "2.4rem"}
+          color="white"
+          fontFamily="Source Sans Pro"
+          fontWeight="bold"
+          textAlign="center"
         >
-          <Typography
-            fontSize="1.2rem"
-            color="white"
-            fontFamily="Source Sans Pro"
-            fontWeight="normal"
-          >
-            Feel free to reach out via email for any inquiries, collaborations, or just to say hello. I'm looking forward to connecting with you!
-          </Typography>
-        </Box>
-      )}
-
+          Check out my profile: <a href="https://jingle.bio/rugwed/" style={{ color: "white", textDecoration: "underline" }}>https://jingle.bio/rugwed/</a>
+        </Typography>
+      </Box>
       {/* Scroll to Top Button */}
       <Box
         sx={{
           textAlign: "center",
           marginTop: "auto",
-          marginBottom: "60px",
+          marginBottom : "50px"
         }}
       >
         <Button variant="contained" color="primary" onClick={scrollToTop}>
