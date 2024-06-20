@@ -136,7 +136,7 @@ const Projects = () => {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
             gap: "200px",
-            minHeight: "100vh",
+            minHeight: "70vh",
             padding:isMobile?"6rem 2.8rem" :"5rem",
           }}
         >
