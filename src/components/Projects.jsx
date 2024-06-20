@@ -7,9 +7,7 @@ const Project = React.lazy(()=>import("./Project.jsx"));
 import projects from "../projectsdata.js";
 import Contact from "./Contact.jsx";
 import blog1Img from "../assets/csf.jpg";
-import blog2Img from "../assets/blog2.png";
-import blog3Img from "../assets/blog3.png";
-import blog4Img from "../assets/blog4.png";
+import blog2Img from "../assets/github1.jpg";
 
 const blogs = [
   {
@@ -20,17 +18,7 @@ const blogs = [
   {
     id: 1,
     img: blog2Img,
-    link: "https://anirudhs22.hashnode.dev/var-vs-let-vs-const",
-  },
-  {
-    id: 2,
-    img: blog3Img,
-    link: "https://anirudhs22.hashnode.dev/callback-functions-in-javascript",
-  },
-  {
-    id: 0,
-    img: blog4Img,
-    link: "https://anirudhs22.hashnode.dev/javascript-important-questions1",
+    link: "https://rugwed37.hashnode.dev/here-are-30-github-commands-that-you-need-to-know",
   },
 ];
 
