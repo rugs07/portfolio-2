@@ -3,40 +3,33 @@ import {
   Box,
   Grid,
   Link,
-  Popover,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import { useTransform, useScroll, motion, useAnimation } from "framer-motion";
 import SkillSection from "./SkillSection";
-// const heroImg = React.lazy(()=>import( "../assets/hero.png"));
+import { styled } from "@mui/system";
 
-const useStyles = makeStyles({
-  link: {
-    position: "relative",
-    overflow: "hidden",
-    padding: "2px",
-    cursor: "pointer",
-    fontSize: "25px",
-    "&::after": {
-      content: '""',
-      position: "absolute",
-      left: 0,
-      bottom: 0,
-      width: "100%",
-      height: "2px",
-      backgroundColor: "white",
-      transform: "scaleX(0)",
-      transition: "transform 0.2s",
-    },
-    "&:hover::after": {
-      transform: "scaleX(1)",
-    },
+const LinkWithUnderline = styled(Link)({
+  position: "relative",
+  overflow: "hidden",
+  padding: "2px",
+  cursor: "pointer",
+  fontSize: "25px",
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    left: 0,
+    bottom: 0,
+    width: "100%",
+    height: "2px",
+    backgroundColor: "white",
+    transform: "scaleX(0)",
+    transition: "transform 0.2s",
   },
-  box: {
-    display: "flex",
+  "&:hover::after": {
+    transform: "scaleX(1)",
   },
 });
 
@@ -50,7 +43,6 @@ const Home = () => {
   });
   const translateX = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
-  const classes = useStyles();
   const controls = useAnimation();
 
   useEffect(() => {
@@ -110,22 +102,28 @@ const Home = () => {
               marginRight="40px"
               onClick={handleProjectClick}
             >
-              <Link underline="none" color="#fff" className={classes.link}>
+              <LinkWithUnderline
+                underline="none"
+                color="#fff"
+                onClick={handleProjectClick}
+              >
                 Projects
-              </Link>
+              </LinkWithUnderline>
             </Typography>
             <Typography variant="h6" onClick={handleContactMeClick}>
-              <Link underline="none" color="#fff" className={classes.link}>
+              <LinkWithUnderline
+                underline="none"
+                color="#fff"
+                onClick={handleContactMeClick}
+              >
                 Contact Me
-              </Link>
+              </LinkWithUnderline>
             </Typography>
           </Box>
           <Suspense>
             <Box
               className="home-wrapper"
               sx={{
-                // backgroundImage: `url(${heroImg})`,
-                // background: "linear-gradient(to right, #0ff027, #203a43, #2c5364)",
                 border: "2px solid white",
                 backgroundSize: "cover",
                 borderRadius: "20px",

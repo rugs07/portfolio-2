@@ -6,25 +6,24 @@ import {
   useTheme,
   useMediaQuery,
 } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { styled } from "@mui/system";
 import { useTransform, useScroll, motion, useAnimation } from "framer-motion";
 
-const useStyles = makeStyles({
-  text: {
-    // color: "white",
-    textTransform: "capitalize",
-    textAlign: "center",
-    fontFamily: "Source Sans Pro",
-    fontWeight: "bold",
-  },
-  skiilsText: {
-    color: "white",
-    textAlign: "center",
-    fontFamily: "Source Sans Pro",
-    fontWeight: "bold",
-    cursor: "pointer",
-  },
-});
+const Text = styled(Typography)(({ theme }) => ({
+  textTransform: "capitalize",
+  textAlign: "center",
+  fontFamily: "Source Sans Pro",
+  fontWeight: "bold",
+  marginBottom: theme.breakpoints.down("sm") ? "1.4rem" : "0rem",
+}));
+
+const SkillsText = styled(Typography)(({ theme }) => ({
+  color: "white",
+  textAlign: "center",
+  fontFamily: "Source Sans Pro",
+  fontWeight: "bold",
+  cursor: "pointer",
+}));
 
 const colors = [
   "#FFFFE0",
@@ -46,7 +45,6 @@ const skillArr = [
 ];
 
 const SkillSection = () => {
-  const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [color, setColor] = useState(colors[0]);
@@ -93,25 +91,22 @@ const SkillSection = () => {
   return (
     <motion.div
       ref={skillsRef}
-      style={{ rotateY, scale,translateX }}
+      style={{ rotateY, scale, translateX }}
       transition={{ duration: 0.5 }}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={controls}
     >
       <Box marginTop="150px" display="flex" flexDirection="column">
-        <Typography
+        <Text
           sx={{
             fontSize: isMobile ? "2.8rem" : "5.6rem",
             width: isMobile ? "50%" : "100%",
             alignSelf: "center",
             color: color,
-            marginBottom: isMobile ? "1.4rem" : "0rem",
           }}
-          className={classes.text}
         >
-          {/* aria-owns={open ? 'mouse-over-popover':undefined} aria-haspopup="true" onMouseEnter={handlePopoverOpen} onMouseLeave={handlePopoverClose} */}
           What Am I Good At <span style={{ color: color }}>?</span>
-        </Typography>
+        </Text>
         <Popover
           id="mouse-over-popover"
           sx={{
@@ -152,12 +147,7 @@ const SkillSection = () => {
               dragElastic={0.2}
               key={i}
             >
-              <Typography
-                className={classes.skiilsText}
-                variant={isMobile ? "h3" : "h2"}
-              >
-                {skill}
-              </Typography>
+              <SkillsText variant={isMobile ? "h3" : "h2"}>{skill}</SkillsText>
             </motion.div>
           ))}
         </Box>
